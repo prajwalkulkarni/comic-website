@@ -94,7 +94,7 @@ export const FilterByCharacters = () => {
   }
 
   //Adding a dummy record corresponding to a loader item
-  data?.push(loaderData);
+  hasNextPage ? data?.push(loaderData) : null;
 
   return (
     <div className="flex space-x-1 p-2 items-center justify-center">
@@ -110,12 +110,16 @@ export const FilterByCharacters = () => {
       >
         {data?.map((character, index) => {
           //If the current character is the last character(dummy iem), render loader skeleton
-          if (index === data.length - 1) {
+          if (index === data.length - 1 && hasNextPage) {
             return (
               <div ref={loaderRef} key={character.id}>
                 <Skeleton.Avatar shape="circle" active size={100} />
               </div>
             );
+          }
+
+          if (!hasNextPage) {
+            return <p>End of List</p>;
           }
 
           return (
