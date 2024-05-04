@@ -6,6 +6,7 @@ import {
   ProgressiveImageLoading,
   SkeletonLoader,
 } from "../../utils/commonComponents";
+import { SearchOutlined } from "@ant-design/icons";
 
 export const ComicList = () => {
   const { setPageNumber, pageNo, title, characters, clearFilters } =
@@ -57,6 +58,11 @@ export const ComicList = () => {
         </div>
       ) : null}
       <div className="flex flex-wrap justify-center">
+        {data?.results.length === 0 ? (
+          <p className="text-lg font-bold">
+            <SearchOutlined /> No Results found :(
+          </p>
+        ) : null}
         {data?.results.map((comic) => {
           return <Comic comic={comic} key={comic.id} />;
         })}
