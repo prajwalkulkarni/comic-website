@@ -97,3 +97,5 @@ const Comic = ({ comic }: { comic: Result }) => {
     </div>
   );
 };
+
+export default ComicList;

@@ -1,10 +1,13 @@
 import { ConfigProvider } from "antd";
 import { FilterByCharacters } from "./components/FilterByCharacters/FilterByCharacters";
 import { Searchbar } from "./components/Searchbar/Searchbar";
-import { ComicList } from "./components/ComicList/ComicList";
 import { ContextProvider } from "./store/useGetApplicationState";
 import ErrorBoundary from "./utils/ErrorBoundary";
+import React from "react";
 
+const ComicListLazy = React.lazy(
+  () => import("./components/ComicList/ComicList")
+);
 function App() {
   return (
     <ErrorBoundary>
@@ -19,7 +22,7 @@ function App() {
           <Searchbar />
           <div className="flex flex-col md:p-16">
             <FilterByCharacters />
-            <ComicList />
+            <ComicListLazy />
           </div>
         </ConfigProvider>
       </ContextProvider>

@@ -26,7 +26,7 @@ const Context = createContext({
   characters: {},
   setPageNumber: (_: number) => {},
   setSearchTitle: (_: string) => {},
-  setCharacters: (_: number, characterName: string) => {},
+  setCharacters: (_: number, _characterName: string) => {},
   clearFilters: () => {},
 });
 
