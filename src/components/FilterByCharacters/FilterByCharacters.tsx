@@ -1,4 +1,4 @@
-import { Button, Skeleton, Space } from "antd";
+import { Button, Skeleton, Space, Tooltip } from "antd";
 import { Extension, Result, useGetCharacters } from "./hooks/useGetCharacters";
 import { useGetApplicationState } from "../../store/useGetApplicationState";
 import {
@@ -151,23 +151,25 @@ const Character = ({
 }) => {
   return (
     <div className="flex-shrink-0 mx-2 basis-1/2 sm:basis-2/5 md:basis-1/5  mx-2 relative">
-      <div
-        onClick={() => setCharacters(character.id, character.name)}
-        className="w-fit hover:cursor-pointer"
-      >
-        <ProgressiveImageLoading
-          src={character.thumbnail.path + "." + character.thumbnail.extension}
-          style={{ width: 100 }}
-          className="rounded-full border-2 bg-cover border-black object-cover overflow-hidden aspect-square"
-        />
-
-        {isChecked && (
-          <CheckCircleOutlined
-            style={{ fontSize: "100px" }}
-            className="absolute top-0 left-0 w-full h-full"
+      <Tooltip title={character.name}>
+        <div
+          onClick={() => setCharacters(character.id, character.name)}
+          className="w-fit hover:cursor-pointer"
+        >
+          <ProgressiveImageLoading
+            src={character.thumbnail.path + "." + character.thumbnail.extension}
+            style={{ width: 100 }}
+            className="rounded-full border-2 bg-cover border-black object-cover overflow-hidden aspect-square"
           />
-        )}
-      </div>
+
+          {isChecked && (
+            <CheckCircleOutlined
+              style={{ fontSize: "100px" }}
+              className="absolute top-0 left-0 w-full h-full"
+            />
+          )}
+        </div>
+      </Tooltip>
     </div>
   );
 };
