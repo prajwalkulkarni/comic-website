@@ -135,7 +135,7 @@ export const FilterByCharacters = () => {
         })}
       </div>
       <Button
-        icon={<RightCircleOutlined size={80} />}
+        icon={<RightCircleOutlined size={100} />}
         type="primary"
         shape="circle"
         onClick={() => scrollAction(true)}
@@ -154,11 +154,11 @@ const Character = ({
   isChecked: boolean;
 }) => {
   return (
-    <div className="flex-shrink-0 mx-2 basis-1/2 sm:basis-2/5 md:basis-1/5  mx-2 relative">
+    <div className="flex-shrink-0 mx-2 basis-2/6 sm:basis-1/4 md:basis-1/12  mx-2">
       <Tooltip title={character.name}>
         <div
           onClick={() => setCharacters(character.id, character.name)}
-          className="w-fit hover:cursor-pointer"
+          className="w-fit hover:cursor-pointer relative"
         >
           <ProgressiveImageLoading
             src={character.thumbnail.path + "." + character.thumbnail.extension}
